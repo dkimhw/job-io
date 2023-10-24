@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+
+import mongoose from 'mongoose';
 
 const connectDB = (url) => {
   return mongoose.connect(url, {
@@ -7,6 +8,7 @@ const connectDB = (url) => {
     useFindAndModify: false,
     useUnifiedTopology: true,
   })
-}
+};
 
-module.exports = connectDB
+
+export default connectDB;
