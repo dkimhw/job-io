@@ -5,6 +5,7 @@ import errorHandlerMiddleware from './middleware/error-handler.js';
 import jobsRouter from './routes/jobs.js';
 import authRouter from './routes/auth.js';
 import connectDB from './db/connect.js';
+import authenticateUser from './middleware/authentication.js';
 
 // initialize app
 const app = express();
@@ -13,7 +14,7 @@ const app = express();
 app.use(express.json());
 
 // routers
-app.use('/api/v1/jobs', jobsRouter);
+app.use('/api/v1/jobs', authenticateUser, jobsRouter);
 app.use('/api/v1/auth', authRouter);
 
 // import credentials
