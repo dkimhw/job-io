@@ -10,6 +10,9 @@ import authenticateUser from './middleware/authentication.js';
 // initialize app
 const app = express();
 
+// import credentials
+dotenv.config({path: '.env'});
+
 // middleware
 app.use(express.json());
 
@@ -17,10 +20,7 @@ app.use(express.json());
 app.use('/api/v1/jobs', authenticateUser, jobsRouter);
 app.use('/api/v1/auth', authRouter);
 
-// import credentials
-dotenv.config({path: '.env'});
-
-// error handler
+// error handling
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
